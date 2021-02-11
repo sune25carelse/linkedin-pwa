@@ -74,12 +74,6 @@ function Feed() {
           photoUrl={photoUrl}
         />
       ))}
-
-      <Post
-        name="Luca Van Wyk"
-        description="This is a test"
-        message="it fckn works"
-      />
     </div>
   );
 }
