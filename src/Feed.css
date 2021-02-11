@@ -37,4 +37,7 @@
   display: none;
 }
 
-/* styleing for feed */
+.feed__inputOptions {
+  display: flex;
+  justify-content: space-evenly;
+}
