@@ -1,25 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import { auth } from "./firebase";
 import "./Login.css";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [prfilePic, setProfilePic] = useState("");
+
   const register = () => {};
-  const loginToApp = () => {};
+
+  const loginToApp = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="login">
       <img
-        scr="https://news.hitb.org/sites/default/files/styles/large/public/field/image/500px-LinkedIn_Logo.svg__1.png?itokq_lR0Vks"
+        scr="http://premierdetroitseo.com/wp-content/uploads/2017/05/linkedin_connect_button.png"
         alt=""
       />
 
       <form>
-        <input placeholder="full name required if registering" type="" />
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="full name required if registering"
+          type=""
+        />
 
-        <input placeholder="Profile pic URL {optional}" type="text" />
+        <input
+          value={setProfilePic}
+          onChange={(e) => setProfilePic(e.target.value)}
+          placeholder="Profile pic URL {optional}"
+          type="text"
+        />
 
-        <input placeholder="Email" type="email" />
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          type="email"
+        />
 
-        <input placeholder="Password" type="password" />
+        <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          type="password"
+        />
 
         <button type="submit" onClick={loginToApp}>
           Sign In
@@ -27,7 +56,7 @@ function Login() {
       </form>
 
       <p>
-        Not a member?
+        Not a member? {""}
         <span className="login__register" onClick={register}>
           Register Now
         </span>
