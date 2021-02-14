@@ -16,23 +16,26 @@ function Login() {
       return alert("please enter full name!");
     }
 
-    auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
-      userAuth.user
-        .updateProfile({
-          displayName: name,
-          photoURL: profilePic,
-        })
-        .then(() => {
-          dispatch(
-            login({
-              email: userAuth.user.email,
-              uid: userAuth.user.uid,
-              displayName: name,
-              photoURL: profilePic,
-            })
-          );
-        });
-    });
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userAuth) => {
+        userAuth.user
+          .updateProfile({
+            displayName: name,
+            photoURL: profilePic,
+          })
+          .then(() => {
+            dispatch(
+              login({
+                email: userAuth.user.email,
+                uid: userAuth.user.uid,
+                displayName: name,
+                photoURL: profilePic,
+              })
+            );
+          });
+      })
+      .catch((error) => alert(error.message));
   };
 
   const loginToApp = (e) => {
