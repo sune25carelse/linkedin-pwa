@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "./features/userSlice";
 import { auth } from "./firebase";
 import "./Login.css";
 
@@ -6,9 +8,32 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [prfilePic, setProfilePic] = useState("");
+  const [profilePic, setProfilePic] = useState("");
+  const dispatch = useDispatch();
 
-  const register = () => {};
+  const register = () => {
+    if (!name) {
+      return alert("please enter full name!");
+    }
+
+    auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
+      userAuth.user
+        .updateProfile({
+          displayName: name,
+          photoURL: profilePic,
+        })
+        .then(() => {
+          dispatch(
+            login({
+              email: userAuth.user.email,
+              uid: userAuth.user.uid,
+              displayName: name,
+              photoURL: profilePic,
+            })
+          );
+        });
+    });
+  };
 
   const loginToApp = (e) => {
     e.preventDefault();
@@ -30,7 +55,7 @@ function Login() {
         />
 
         <input
-          value={setProfilePic}
+          value={profilePic}
           onChange={(e) => setProfilePic(e.target.value)}
           placeholder="Profile pic URL {optional}"
           type="text"
