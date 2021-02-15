@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, selecUser } from "./features/userSlice";
+import { login, logout, selectUser } from "./features/userSlice";
 import Feed from "./Feed";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
@@ -9,7 +9,7 @@ import Login from "./Login";
 import { auth } from "./firebase";
 
 function App() {
-  const user = useSelector(selecUser);
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
         dispatch(logout());
       }
     });
-  }, []);
+  }, [dispatch]);
   return (
     <div className="app">
       <Header />

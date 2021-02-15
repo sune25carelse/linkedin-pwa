@@ -42,7 +42,7 @@ function Header() {
         <HeaderOption
           avatar="https://seeklogo.net/wp-content/uploads/2011/08/liverpool-logo-vector-400x400.png"
           title="me"
-          onclick={logoutOfApp}
+          onClick={logoutOfApp}
         />
       </div>
     </div>

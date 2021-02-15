@@ -17,14 +17,14 @@ function Feed() {
   useEffect(() => {
     db.collection("posts")
       .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
+      .onSnapshot((snapshot) =>
         setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
             data: doc.data(),
           }))
-        );
-      });
+        )
+      );
   }, []);
 
   const sendPost = (e) => {

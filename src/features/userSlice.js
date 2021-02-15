@@ -18,6 +18,6 @@ export const userSlice = createSlice({
 export const { login, logout } = userSlice.actions;
 
 // select we do the pull
-export const selecUser = (state) => state.user.user;
+export const selectUser = (state) => state.user.user;
 
 export default userSlice.reducer;
