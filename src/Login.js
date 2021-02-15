@@ -19,7 +19,7 @@ function Login() {
       .then((userAuth) => {
         dispatch(
           login({
-            email: userAuth.email,
+            email: userAuth.user.email,
             uid: userAuth.user.uid,
             displayName: userAuth.user.displayName,
             profilePic: userAuth.user.photoURL,
