@@ -7,11 +7,12 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ChatIcon from "@material-ui/icons/Chat";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./firebase";
-import { logout } from "./features/userSlice";
+import { logout, selectUser } from "./features/userSlice";
 
 function Header() {
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const logoutOfApp = () => {
@@ -39,11 +40,7 @@ function Header() {
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
         <HeaderOption Icon={ChatIcon} title="Messaging" />
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-        <HeaderOption
-          avatar="https://seeklogo.net/wp-content/uploads/2011/08/liverpool-logo-vector-400x400.png"
-          title="me"
-          onClick={logoutOfApp}
-        />
+        <HeaderOption avatar={true} title="me" onClick={logoutOfApp} />
       </div>
     </div>
   );
